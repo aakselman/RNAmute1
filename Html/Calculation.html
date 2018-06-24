@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head style="z-index: 100;">
+            
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="Calculation.css">
+        <link rel="stylesheet" type="text/css" href="Home.css">
+        <link rel="stylesheet" href="./login_register.css">
+
+        <link rel="icon" href="images/LOGO.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="Script.js"></script>
+        <title>Calculation</title>
+         <style>.underbar {  left: 719px;width: 90px;top: 104px;height: 7px;background: #18a7ff;}</style>
+    </head>
+    <body>
+        
+      <div class="Rectangle" style="z-index: -1;">
+
+      
+        <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+            <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+            <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+            <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+            <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+            <div class="underbar"></div>
+        <h2>RNA mutatation calculations</h2>
+      </div>
+
+
+<!-- Loading Codeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+
+
+
+
+
+      <div id="login/register" class="login-page animate" style=" z-index: 100;">
+		<!-- <div class="form">-->
+
+                <div id="preloader">
+                        <div id="loader"></div>
+                      </div>
+                     <!-- <div class="RNA_Cal" style="font-size:30px; top:50%;">Please wait until calculations ends</div>-->
+
+           
+        </div>
+<!--######################################################################################-->
+
+
+      <div class="form-container"></div>
+        <div class="RNA_Cal">RNA Calculation</div>
+        <div class="RNA_Cal2">Insert your RNA sequence
+        <input pattern="[A-Z]" id="RNAsequence"class="shape1" style="color: black;" type="text" placeholder="Type an RNA sequence here"/>  </div>
+
+        <div class="Num_of_mut">
+            <h1  class="ins_text">Number of mutations:</h1>
+             <h1 class="ins_text" style="top: 60px;">Start of reading frame:</h1>
+             <h1 class="ins_text"style="top: 120px; left: 70px;">Do not change amino acids</h1>
+            <input pattern=".{1,300}" id="Num_of_mutations"class="text_box" type="number" style="color: black;"  placeholder=""/>
+            <input id="Start_of_reading_frame"class="text_box" type="number" style="color: black; top: 60px;" placeholder=""/>
+            <input id="change_amino_acid" type="checkbox" class="check_box"  name="amino_acid_change"><br>
+
+        </div>
+
+
+        <div class="Num_of_mut" style="left: 48.3%;width: 490px;height: 180px;">
+            <h1 class="ins_text" style="text-align: center; top:-5px; left: 0;right: 0;">Clustering resolution for tables</h1>
+
+
+             <h1 class="ins_text" style="top: 40px;">Tree - edit dot bracket distance:</h1>
+             <h1 class="ins_text" style="top: 85px;">Hamming dot bracket distance:</h1>
+            <h1 class="ins_text" style="top: 130px;">Base -pair dot bracket distance:</h1>
+
+             <input id="Tree_edit_dist" class="text_box" type="number"  style="color: black; top: 40px; left: 320px;" placeholder=""/>
+            <input id="Hamming_dist" class="text_box" type="number" style="color: black; top: 85px;left: 320px;" placeholder=""/>
+            <input id="Base_pair_dist" class="text_box" type="number" style="color: black; top: 130px;left: 320px;" placeholder=""/>
+        </div>
+
+        <div class="RNA_Cal3">Algorithm parameters</div>
+
+
+        <div class="Num_of_mut" style="left: 18.8%;top: 600px;width: 290px;height: 170px;">
+             <h1 class="ins_text" style="top: 20px;">dist 1:</h1>
+             <h1 class="ins_text" style="top: 70px;">dist 2:</h1>
+            <h1 class="ins_text" style="top: 120px;">e-range:</h1>
+
+             <input id="dist_1" class="text_box" type="number"  style="color: black; top: 20px; left: 120px; " placeholder=""/>
+            <input id="dist_2" class="text_box" type="number" style="color: black; top: 70px;left: 120px;" placeholder=""/>
+            <input id="e-range" class="text_box" type="number" style="color: black; top: 120px;left: 120px;" placeholder=""/>
+        </div>
+
+ 
+  
+        <div class="Num_of_mut" style=" left:38.95%;top: 600px;width: 265px;height: 150px;">
+            <h1 class="ins_text" style="text-align: center; top:-5px; left: 0;right: 0;">Type of distance</h1>
+            <h1 class="ins_text" style="top: 40px; left: 50px;">Hamming dot bracket</h1>
+             <h1 class="ins_text" style="top: 90px;left: 50px;">Base -pair dot bracket</h1>
+             <input type="radio" name="Type_of_distance" value="h" style="top: 50px;left: 10px;position: absolute"><br>
+             <input type="radio" name="Type_of_distance" value="b" style="top: 100px;left: 10px;position: absolute"><br>
+        </div>
+
+        <div class="Num_of_mut" style="left:57.6%;top: 600px;width: 350px;height: 202px;">
+            <h1 class="ins_text" style="text-align: center; top:-7px; left: 0;right: 0;">Method</h1>
+
+            <h1 class="ins_text" style="top: 35px; left: 35px;">Fast, only stabilizing</h1>
+             <h1 class="ins_text" style="top: 75px;left: 35px;">Slow, only stabilizing</h1>
+            <h1 class="ins_text" style="top: 115px; left: 35px;">Fast, stabilizing and destabilizing</h1>
+             <h1 class="ins_text" style="top: 155px;left: 35px;">Slow, stabilizing and destabilizing</h1>
+
+             <input  type="radio" name="Method" value="f" style ="top: 45px;left: 8px;position: absolute"><br>
+             <input type="radio" name="Method"  value="s" style="top: 85px;left: 8px;position: absolute"><br>
+             <input type="radio" name="Method"  value="d" style  ="top: 125px;left: 8px;position: absolute"><br>
+             <input type="radio" name="Method"  value="e"  style ="top: 165px;left: 8px;position: absolute"><br>
+        </div>
+    
+
+        <div class="Num_of_mut" style="width:500px; height:60px; position: absolute; top: 800px; left: 285px; z-index: 6;">
+
+             <h1 class="ins_text"style="top:10px; left: 50px;">Send by Email</h1>
+            <input id="email_input"class="text_box" style="color: black;  left:190px; width:290px;" type="email"  placeholder=""/>
+
+        </div>
+
+  
+
+<!--Loading();-->
+        <a href="#" onclick="Calculation()" class="myButton2" >Calculate</a>
+        <a href="#" onclick="myFunction()" class="myButton2" style="left: 650px;">Reset Form</a>
+        <a href="#" onclick="Example()" class="myButton2" style="left:800px;">Example</a>
+        <a href="http://localhost:8888/Help.html" target="_blank" class="myButton2" style="left:950px;">Help</a>
+
+
+<script>
+
+
+      $('.message a').click(function () {
+             $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+         });
+
+         $(document).ready(function () {
+             $("#flip").click(function () {
+                 $("#panel").slideToggle("slow");
+             });
+         });
+
+         
+         var modal = document.getElementById('login/register');
+         window.onclick = function (event) {
+             if (event.target == modal) {
+                 modal.style.display = "none";
+             }
+         }
+
+
+
+
+       function LoadingBar()
+       {
+        window.location.href= 'http://localhost:8888/Loading.html';
+       } 
+
+
+            var calcs = ["Saab", "Volvo", "BMW"];
+
+             function myFunction() 
+             {
+                 location.reload();
+                 }
+
+   
+
+
+        function Calculation()
+        {
+            /*if(localStorage.getItem("User") && input_check())*/
+            if(true)
+            {   
+                var now = new Date();
+                var calculation = 
+                {
+                    User:localStorage.getItem("User"),                    
+                    Date:now.getDate()+""+(now.getMonth()+1)+""+now.getFullYear()+""+now.getTime()+""+now.getMilliseconds(),
+                    Email: $('#email_input').val(),
+                    RNA_sequence:$('#RNAsequence').val().toUpperCase(),     
+                    Num_of_mutations:$('#Num_of_mutations').val(),
+                    Start_of_reading_frame:$('#Start_of_reading_frame').val(),
+                    //change_amino_acid:$("#change_amino_acid").attr('checked', true),
+                    Tree_edit_dist:$('#Tree_edit_dist').val(),  /*Clustering resolution for table parameters*/
+                    Hamming_dist:$('#Hamming_dist').val(),
+                    Base_pair_dist:$('#Base_pair_dist').val(),
+                    dist_1:$('#dist_1').val(),                   /*Algorithm parameters*/
+                    dist_2:$('#dist_2').val(),
+                    e_range:$('#e-range').val(),
+                    Type_of_distance:$("input[type='radio'][name='Type_of_distance']:checked").val(),  /*type of distnace*/
+                    Method:$("input[type='radio'][name='Method']:checked").val()     
+
+            };
+            var json_calc=JSON.stringify(calculation); 
+
+            document.getElementById('login/register').style.display='block';
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/calculation/solution',
+                data: json_calc,
+                contentType: 'application/json',
+                success: function(res)  
+                { 
+                                   
+                        window.location.replace("http://localhost:8888"+res);
+                        document.getElementById('login/register').style.display='none';
+
+
+                },
+                error  : function() { alert('error');}
+            });
+        }
+    }
+
+
+
+
+
+
+    function input_check()
+    {
+        var calculation =
+                [
+                    $('#RNAsequence').val().toUpperCase(),     
+                    $('#Num_of_mutations').val(),
+                    $('#Start_of_reading_frame').val(),
+                    $('#Tree_edit_dist').val(),  /*Clustering resolution for table parameters*/
+                    $('#Hamming_dist').val(),
+                    $('#Base_pair_dist').val(),
+                    $('#dist_1').val(),                   /*Algorithm parameters*/
+                    $('#dist_2').val(),
+                    $('#e-range').val(),
+                    $("#change_amino_acid").attr('checked', true),
+                    $("input[type='radio'][name='Type_of_distance']:checked").val(),  /*type of distnace*/
+                    $("input[type='radio'][name='Method']:checked").val()     
+
+            ];
+            for (i = 0; i < calculation.length; i++)
+             { 
+                if(calculation[i]=="")
+                {
+                    return false;
+                }
+             }
+
+             if(!calculation[10])
+             {
+                $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Faild to Register',
+                                content: '"Type of distance" field must be filled',
+                                type: 'blue',
+                        });
+                        return false;
+
+             }
+             else if(!calculation[11])
+             {
+                $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Faild to Register',
+                                content: '"Method" field must be filled',
+                                type: 'blue',
+                        });
+                        return false;
+             }
+             
+             return true;
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/*For Example calculation*/
+    function Example()
+    {
+
+
+                    $('#RNAsequence').attr('value', 'AGCGGGGGAGACAUAUAUCACAGCCUGUCUCGUGCCCGACCCCGC');     
+                    $('#Num_of_mutations').attr('value', '2');
+                    $('#Start_of_reading_frame').attr('value', '');
+                    $('#Tree_edit_dist').attr('value', '2');  /*Clustering resolution for table parameters*/
+                    $('#Hamming_dist').attr('value', '2');
+                    $('#Base_pair_dist').attr('value', '2');
+                    $('#e-range').attr('value', '12');
+                    $('#dist_1').attr('value', '12');                   /*Algorithm parameters*/
+                    $('#dist_2').attr('value', '12');
+                    $("#change_amino_acid").attr('checked', false);
+                    $("[name=Method]").val(["d"]);
+                    $("[name=Type_of_distance]").val(["h"]);
+    
+            }
+
+
+
+
+
+
+
+
+
+    $(document).ready(function() 
+    {
+        $('#change_amino_acid').change(function() {
+            if($(this).is(":checked")) 
+            {
+                $("#Start_of_reading_frame").attr("readonly", true);
+
+            }
+            else
+            {
+                $("#Start_of_reading_frame").attr("readonly", false);
+            }   
+        });
+    });
+                 
+
+
+
+
+
+
+
+
+
+
+
+    function progressBarSim(al){
+        var bar=document.getElementById('progressBar');
+        var status=document.getElementById('status');
+        if(al<100){
+            status.innerHTML=al+"%";
+              bar.value=al;
+              al++;
+              var sim=setTimeout("progressBarSim("+al+")",300);
+        }
+        else{
+            status.innerHTML="100%";
+            bar.value=100;
+            clearTimeout(sim);
+            document.getElementById('finalMessage').innerHTML="Process is completed";
+            }
+        
+    }
+        var amountLoaded =0;
+        progressBarSim(amountLoaded);
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+         </script>
+    </body>
+</html>

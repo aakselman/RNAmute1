@@ -1,0 +1,55 @@
+body {
+    
+}
+
+.form-container {
+   border: 2px solid #000000;
+   background: #000000;
+   background: -webkit-gradient(linear, left top, left bottom, from(#1e5a85), to(#000000));
+   background: -webkit-linear-gradient(top, #1e5a85, #000000);
+   background: -moz-linear-gradient(top, #1e5a85, #000000);
+   background: -ms-linear-gradient(top, #1e5a85, #000000);
+   background: -o-linear-gradient(top, #1e5a85, #000000);
+   background-image: -ms-linear-gradient(top, #1e5a85 0%, #000000 100%);
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
+   border-radius: 30px;
+   -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 1px 0;
+   font-family: 'Helvetica Neue',Helvetica,sans-serif;
+   text-decoration: none;
+   position: absolute;
+   left: 150px;
+   top: 140px;
+   width:1200px;
+   opacity: 0.9;
+   height: 900px;
+   z-index: 100;
+   }
+
+.abstract
+{
+    
+    color: #fff;
+    text-align: center;
+}
+
+
+.round5
+{  
+    position: absolute;
+  left: 730px;
+  top:225px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+
+
+
+.helpbody
+{
+    background: linear-gradient(to bottom, #99ccff 0%, #cc33ff 100%);
+}

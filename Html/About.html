@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="About.css">
+        <link rel="stylesheet" type="text/css" href="Home.css">
+        <title>About</title>
+        <style>.underbar {left: 1114px;width: 60px;top: 104px;height: 7px;background: #18a7ff;}</style>
+    </head>
+    <body>
+        
+         <div class="Rectangle">
+            <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+            <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+            <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+            <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+            <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+            <div class="underbar"></div>
+          
+        <h2>RNA mutatation calculations</h2>
+        </div>
+        
+        
+        <div class="form-container">
+            <h1 class="abstract">Abstract</h1>
+            <p class="abstract" style="width: 800px;left: 200px; position: absolute; text-align:left;">
+            RNA mutational analysis at the secondary-structure
+            level can be useful to a wide-range of biological applications.
+            It can be used to predict an optimal site
+            for performing a nucleotide mutation at the single
+            molecular level, as well as to analyze basic phenomena
+            at the systems level. For the former, as more
+            sequence modification experiments are performed
+            that include site-directed mutagenesis to find and
+            explore functional motifs in RNAs, a pre-processing
+            step that helps guide in planning the experiment
+            becomes vital. For the latter, mutations are generally
+            accepted as a central mechanism by which evolution
+            occurs, and mutational analysis relating to
+            structure should gain a better understanding of
+            system functionality and evolution. In the past
+            several years, the program RNAmute that is structure
+            based and relies on RNA secondary-structure
+            prediction has been developed for assisting in RNA
+            mutational analysis. It has been extended from
+            single-point mutations to treat multiple-point mutations
+            efficiently by initially calculating all suboptimal
+            solutions, after which only the mutations that stabilize
+            the suboptimal solutions and destabilize the
+            optimal one are considered as candidates for being deleterious.
+            <iframe width="450" height="280" src="https://www.youtube.com/embed/Y4p6jhFaru4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <img class="round5" src="images/rnarna.gif" alt="Avatar">
+            <img class="round5" style="left: 500px; top: 225px;" src="images/rnarna2.png" alt="Avatar">
+
+            </p>
+
+            <h1 class="abstract" style="top:570px; left: 535px; position: absolute;">RNAmute</h1>
+            <h1 class="abstract" style="font-size:25px; top:620px; left: 250px; position: absolute;">RNA secondary structure single-point mutation analysis tool</h1>
+            <p class="abstract" style="top:670px; width: 800px;left: 200px; position: absolute;text-align:left;">
+
+                RNAMute is an interactive Web tool that 
+                calculates the secondary structure of all single point mutations, given 
+                an RNA sequence, and organizes them into categories according to their 
+                distances from the wildtype predicted structure. The secondary structure 
+                predictions are performed using the Vienna RNA package. Several alternatives 
+                are used for the categorization of single point mutations: Vienna's RNADistance 
+                based on dot-bracket representation, tree edit distance, and second eigenvalue of 
+                the Laplacian matrix based on Shapiro's coarse grain tree-graph representation.
+                Selecting a category in each one of the tables lists all single point mutations 
+                belonging to that category. Selecting a mutation displays a graphical picture of
+                the single point mutation and the wildtype, and includes basic information such
+                as associated energies, representations, distances. RNAMute is a user friendly 
+                tool that can be used to predict single point mutations leading to conformational
+                rearrangements in the secondary structure of RNAs.
+            </p>
+           
+            
+        </div>
+    </body>
+</html>

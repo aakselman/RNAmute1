@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+            <meta charset="utf-8" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+            <script src="Script.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" type="text/css" href="./Home.css">
+            <link rel="stylesheet" type="text/css" href="./login_register.css">
+    
+            <link rel="icon" href="images/LOGO.png">
+            <title>RNAmute home</title>
+            <style>.underbar {left: 545px;width: 60px;top: 104px;height: 7px;background: #18a7ff;}</style>
+        </head>
+    <body>
+
+            <div class="Rectangle">
+                    <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+                    <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+                    <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+                    <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+                    <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+                    <div class="underbar"></div>
+        
+        
+                    <button id="userbtn" class="btn Home" style="left: 1300px; top: 30px;width: 200px;
+                    font-size: 15px;" onclick="window.location.href= 'Home.html'">User</button>
+        
+                <h2>RNA mutatation calculations</h2>
+            </div>
+
+            <div id="blue_bar" class="Rectangle" align="center" style="top:100px;  position: absolute;  width: 500px; height:100%;"></div>
+            <p  class="headtext" style="top:100px; left:650px;" >History of calculations</p>
+            
+            <ul id="calc_list" class="btn calc headtext" style="top:150px; font-size: 15px; list-style-type: decimal;" ></ul>
+            
+           
+                <script>
+                    $("#blue_bar").css("left", window.innerWidth / 3);
+                    var calcs = ["Saab", "Volvo", "BMW"];
+                    var ul = document.getElementById("calc_list");
+                    $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:8888/calculation/Userpage',
+                            data: {"User":localStorage.getItem("User")},
+                            dataType: 'text',
+                            success: function(res)  
+                            { 
+                                calcs=JSON.parse(res);
+                                for (var i = 0; i < calcs.length; i++) 
+                                { 
+                                    var x=calcs[i].ID;
+                                    var li = document.createElement("li");
+                                    li.setAttribute('id',i);
+                                    li.appendChild(document.createTextNode("Calculation "+(i+1)));
+
+                                    li.addEventListener("click", function()
+                                    {
+
+                                        window.location.href ="http://localhost:8888/getcalc/byid/"+x+""; 
+
+                                    });
+                                   /* li.onclick=function()
+                                    {
+                                        window.location.replace("http://localhost:8888/getcalc/byid/"+calcs[i].ID);
+
+                                    }*/
+                                    ul.appendChild(li);
+                                    }
+                                },
+                            error  : function() { alert('error');}
+                            });
+
+                      
+                </script>
+
+
+    </body>
+</html>

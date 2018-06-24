@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <script src="Script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./Home.css">
+        <link rel="stylesheet" href="./login_register.css">
+
+        <link rel="icon" href="images/LOGO.png">
+        <title>RNAmute home</title>
+        <style>.underbar {left: 545px;width: 60px;top: 104px;height: 7px;background: #18a7ff;}</style>
+    </head>
+ 
+    <body onload="startpage()">
+        
+        <div class="Rectangle">
+            <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+            <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+            <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+            <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+            <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+            <div class="underbar"></div>
+
+            <button id="loginbtn" class="btn Home" style="visibility: visible; left: 1250px; top: 30px;width:150px;
+                        font-size: 15px;"onclick="document.getElementById('login/register').style.display='block'">
+                        login/register</button>
+
+            <button id="userbtn" class="btn Home" style="left: 1200px; top: 30px;width: auto;
+            font-size: 15px; visibility:hidden;" onclick="window.location.href= 'Userpage.html'">User</button>
+            <button id="userdis" class="btn Home" style="left: 1300px; top: 30px;width: auto;
+            font-size: 15px; visibility: hidden;" onclick="logout()" >Log out</button>
+
+        <h2>RNA mutatation calculations</h2>
+        </div>
+        
+        <h1 class="fade-in RNA_head">Whats is RNAmute</h1>
+        <h1 class="fade-in RNA_head2">application about?</h1>
+        <h1 class="fade-in RNA_exp">RNAmute is an application that provides 
+            a user friendly interface for analyzing the effects 
+            of point mutations on RNAs secondary structure</h1>
+       <a href="#" onclick="window.location.href= 'About.html'" class="myButton">Read more here >></a>
+       <!-- <a onclick="doing()" class="myButton" style="top:700p;">Read more here >></a> READ MORE HERE-->
+       <img class="RNA_IMG" src="images/ROUND.png" alt="Mountain View">
+        <img class="round" src="images/giphy.gif" alt="Avatar">
+
+        <!--<img class="round" src="images/rnarna.gif" alt="Avatar">-->
+
+        
+
+        <div id="login/register" class="login-page animate">
+		<div class="form">
+
+            <span onclick="document.getElementById('login/register').style.display='none'" class="close" title="Close PopUp">&times;</span>
+			<form  onsubmit="return false;" class="register-form">
+                <input  id="reg_username" onclick="registerusercheck()"   type="text" required pattern=".{4,10}" maxlength="10" title="Must contain at least 4 and at more 10 characters" placeholder="username"/>
+                <p id="useralert2" style="color:	#FF0000;"></p>
+				<input id="reg_password" type="password" required pattern=".{3,8}" maxlength="8" title="Must contain at least 3 and at more 8 characters" placeholder="password"/>
+                <p></p>
+                <input  id="reg_email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Must be of email pattern for example israel@isr.co.il" placeholder="Email"/>
+				<button id="login_button" type="submit" onclick="register()"> Create</button>
+			<p class="message">Already Registered?<a href="#">Login</a></p>
+            </form>	
+
+
+            <form onsubmit="return false;" id ="login_form" class ="login-form">
+                    <input id="login_username"    required pattern=".{4,10}" maxlength="10" title="Must contain at least 4 and at more 10 characters" maxlength="10" type="text" placeholder="user name"/>
+                    <p id="useralert" style="color:	#FF0000;"></p>
+                    <input id="login_password"    required pattern=".{3,8}" maxlength="8" title="Must contain at least 3 and at more 8 characters" maxlength="8" type="password" placeholder="password"/>
+			        <button type="submit" onclick="login()">login</button>	
+			        <p class="message">Not Registered? <a href="#">Register</a></p>
+
+            <div id="flip">
+                    <p class="message">Forgot password or username?</p>
+                    <h1 style="color:#289008; font-size: 12px; cursor: pointer;"> click here?</h1>
+            </div>
+            </form>
+            <form onsubmit="return false;">
+            <div id="panel">
+                <input   id="recover_email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Must be of email pattern for example israel@isr.co.il" type="text" placeholder="Email"/>
+                <button onclick="recover()" >Recover</button>
+             </div>
+           </form>
+           
+		</div>		
+        </div>
+
+
+
+
+        
+
+
+	    <script>  
+    
+         $('.message a').click(function () {
+             $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+         });
+
+         $(document).ready(function () {
+             $("#flip").click(function () {
+                 $("#panel").slideToggle("slow");
+             });
+         });
+
+         
+         var modal = document.getElementById('login/register');
+         window.onclick = function (event) {
+             if (event.target == modal) {
+                 modal.style.display = "none";
+             }
+         }
+
+
+        function registerusercheck()
+        {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/check',
+                data: {"username":$("#reg_username").val()},
+                dataType: 'text',
+                success: function(res) 
+                { 
+                    if(res=="true")
+                    {
+                        document.getElementById("useralert2").innerHTML="This username already exist";
+                        document.getElementById("reg_username").style.border="2px solid red";
+
+                    }
+                    else
+                    {
+                        document.getElementById("useralert2").innerHTML="";
+                        document.getElementById("reg_username").style.border="";
+                        }
+
+                },
+                error  : function() { alert('error');}
+            });
+
+        }
+
+   
+
+        function register()
+        { 
+            if($("#reg_username").val()!="" && $("#reg_password").val()!="" && $("#reg_email").val()!="" )
+            {
+                document.getElementById('login/register').style.display='none';
+
+                if(document.getElementById("useralert2").innerText !="" )
+                {
+                     $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Faild to Register',
+                                content: 'This user name is exist, please choose other username',
+                                type: 'blue',
+                        });
+         
+                }
+                else
+                {
+                    $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8888/emailvalid',
+                    data: {"email":$("#reg_email").val()},
+                    dataType: "text",
+                    async: false,
+                    success: function(res) 
+                    {
+                        if(res=="true")
+                        {
+                         $.confirm({
+                            closeIcon: true, // explicitly show the close icon
+                            title: 'Register failed',
+                            content: 'There is no such email adress',
+                            type: 'blue'
+                            });
+
+                            }
+                        else
+                        {
+                            $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:8888/register',
+                            data: {"username":$("#reg_username").val(),"password":$("#reg_password").val(),"email":$("#reg_email").val()},
+                            dataType: 'text',
+                            success: function(res)  
+                            { 
+                                if(res=="true")
+                                    {
+                                        $.confirm({
+                                        closeIcon: true, // explicitly show the close icon
+                                        title: 'congratulations',
+                                        content: 'You have been successfully registered',
+                                        type: 'blue',
+                                        });
+                                    }
+                                else
+                                {
+                                    alert("Username/Password is wrong please try again");
+                                }
+
+                        },
+                        error  : function() { alert('error');}
+                    
+                    });
+                }
+                },
+                        error  : function() { alert('error');}
+                    });
+                }
+            }
+               
+        }
+
+        function loginusercheck()
+        { 
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/check',
+                data: {"username":$("#login_username").val()},
+                dataType: 'text',
+                success: function(res) 
+                { 
+                    if(res!="true")
+                    {
+                        document.getElementById("useralert").innerHTML="This username don't exist";
+                        document.getElementById("login_username").style.border="2px solid red";
+
+                    }
+                    else
+                    {
+                        document.getElementById("useralert").innerHTML="";
+                        document.getElementById("login_username").style.border="";
+                        }
+
+                },
+                error  : function() { alert('error');}
+            });
+         
+            }
+
+
+        function login()
+        { 
+            if($("#login_username").val()!="" && $("#login_password").val()!="")
+            {
+                if(document.getElementById("useralert").innerText=="")
+                {
+                    $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8888/login',
+                    data: {"username":$("#login_username").val(),"password":$("#login_password").val()},
+                    dataType: 'text',
+                    success: function(res)  
+                    { 
+                        if(res=="true")
+                        {
+                            $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'congratulations',
+                                content: 'You have been successfully logged in',
+                                type: 'blue',
+                                });
+                            localStorage.setItem("User", $("#login_username").val());
+                            $("#userbtn").css("visibility", "visible");
+                            $("#userbtn").html( $("#login_username").val());
+                            $("#userdis").css("visibility", "visible");
+                            $("#loginbtn").css("visibility", "hidden");
+                            document.getElementById('login/register').style.display='none';
+
+                        }
+                        else
+                        {
+                            $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Login Failed',
+                                content: 'Username/Password is wrong please try again',
+                                type: 'blue'
+                                });
+                        }
+
+                        },
+                error  : function() { alert("error");}
+            });
+          }
+          else
+          {
+              $.confirm({
+                            closeIcon: true, // explicitly show the close icon
+                            title: 'Faild to log in',
+                            content: 'This user name dont exist',
+                            type: 'blue',
+                    });
+
+           
+
+          }
+        }
+    }
+
+     function recover()
+        { 
+ 
+            if($("#recover_email").val()!="")
+            {
+                $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/emailvalid',
+                data: {"email":$("#recover_email").val()},
+                dataType: "text",
+                async: false,
+                success: function(res) 
+                {
+                    
+                    if(res!="true")
+                    {
+                        $.confirm({
+                            closeIcon: true, // explicitly show the close icon
+                            title: 'Recover failed',
+                            content: 'There is no such email adress',
+                            type: 'blue'
+                            });
+
+                    }
+                    else
+                    {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:8888/Recover',
+                            data: {"email":$("#recover_email").val()},
+                            dataType: 'text',
+                            success: function(res) 
+                            { 
+                               
+                                $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Recover Succes',
+                                content: 'We send an email with the login information to your email adress',
+                                type: 'blue'
+                                });
+                            },
+                            error  : function() { alert('error');}
+                        });
+                     }
+                    },
+                error  : function(res) { alert('error'+"  "+res.status);}
+             });
+        }
+                
+    }
+
+
+
+$(document).ajaxStart(function() {
+    $(document.body).css({'cursor' :'progress'});
+}).ajaxStop(function() {
+    $(document.body).css({'cursor' : 'default'});
+});
+
+
+function startpage()
+{
+    $('#reg_username').val("");
+    $('#reg_password').val("");
+    $('#reg_email').val("");
+
+    $('#login_password').val("");
+    $('#login_username').val("");
+
+
+    if(!localStorage.getItem("User"))
+    {
+
+        $("#loginbtn").css("visibility", "visible");
+        $("#userbtn").css("visibility", "hidden");
+        $("#userdis").css("visibility", "hidden");
+    }
+    else
+    {
+
+        $("#userbtn").html(localStorage.getItem("User"));
+        $("#loginbtn").css("visibility", "hidden");
+        $("#userbtn").css("visibility", "visible");
+        $("#userdis").css("visibility", "visible");
+    }
+}
+
+function logout()
+{
+    localStorage.clear();
+    window.location.replace("Home.html");
+}
+
+/*function doing()
+{
+    $.ajax({
+                            type: 'GET',
+                            url: 'http://localhost:8888/getcalc/byid/5af70920adcc85fe3cae968c',
+                            data: {"email":"Artur"},
+                            dataType: 'text',
+                            success: function(res) 
+                            { 
+                               
+                                $.confirm({
+                                closeIcon: true, // explicitly show the close icon
+                                title: 'Recover Succes',
+                                content: 'We send an email with the login information to your email adress',
+                                type: 'blue'
+                                });
+                            },
+                            error  : function() { alert('error');}
+                        });
+    
+}*/
+
+
+	    </script>
+	
+    </body>
+  
+</html>

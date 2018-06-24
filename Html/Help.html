@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv=Content-Type content="text/html; charset=windows-1251"/>
+		<meta content="MSHTML 6.00.2900.2180" name="GENERATOR"/>
+		<link rel="stylesheet" type="text/css" href="About.css">
+        <link rel="stylesheet" type="text/css" href="Home.css">
+
+	</head>
+	
+	
+	<body class="helpbody">
+	
+	<H1 align=center>The RNAmute Web App Tutorial<BR></H1>
+	
+	<h1>Input Screen </h1>
+	<p>The input screen of the RNAmute Web App: </p>
+	
+	<img src="/images/screenshots/empty.jpeg" border=0 style="width: 50%;height:50%;">
+	<h3>The user must fill in all input fields:</h3>
+	<ol>
+	 <li>
+		<b>RNA sequence field</b> - Insert here your RNA sequence. The sequence length should not exceed 200 bases.
+	 </li>
+	 <li>
+		<b>Number of mutations</b> - The number of point mutations to insert into the RNA sequence. The number should be
+		a positive number greater than or equal to 1. 
+	 </li>
+	 <li>
+		<b>Start of reading frame</b> - In case you do not want to take into account mutations that change amino acids in 
+		the corresponding protein, the &ldquo;Do not change amino acids&rdquo; checkbox should be checked and &ldquo;Start of reading frame&rdquo; should be specified.
+		For example, if the first base in the sequence is a first base in some codon of the reading frame, the value is 1, etc. 
+	 </li>
+	 <li>
+		<b>Clustering resolution for tables</b> - Here you must specify the clustering resolution for each one of the Results Tables.
+		The tables will be calculated according to three different distance measures: 
+		tree-edit, Hamming, and base-pair.
+		The clustering resolution will determine how the results will be arranged in three Results Tables. 
+		Clustering resolution of X means that distances are sorted in each group and if there are two distances such that the difference
+		between them is less than X, these distances are in the same group. The values should be positive numbers greater than 0.
+	 </li>
+	 <li>
+		<b>dist1</b> - This parameter is used in the algorithm and is needed for filtering suboptimal solutions
+		that are close to the optimal. It is recommended that the value for dist1 will be about 25% of the sequence length,
+		and this value should be lowered if more solutions are desired.
+	 </li>
+	 <li>
+		<b>dist2</b> - This parameter is used in the algorithm and is needed for filtering the suboptimal solutions
+		that are close to each other. It is recommended that the value for dist2 will be about 25% of the sequence length,
+		and this value should be lowered if more solutions are desired.
+	 </li>
+	 <li>
+		<b>e-range</b> - Our algorithm uses the RNAsubopt routine from the Vienna RNA package [2,3] that contains this parameter. In general, a larger e value 
+		will provide better results but also a longer running time. We suggest that e-values between 8-15 will be used for sequence length of about 100 bases.
+		It is better to use lower values first and if the running time is short, you may increase the e-range and try another run.
+	 </li>
+	 <li>
+		<b>Type of distance</b> - Our algorithm performs some filtering of suboptimal solutions and of final results. We allow to choose one of two types of 	distances for filtering.
+	 </li>
+	 <li>
+		<b>Method</b> - We provide 4 different complexity modes for our algorithm. See more information in [1]. We suggest to use the two &ldquo;Fast&rdquo; options that are available. The
+		first option &ldquo;Fast, only stabilizing&rdquo; is very fast and provides many solutions, whereas the third option &ldquo;Fast, stabilizing & destabilizing&rdquo; is slower
+		but provides many more solutions.
+	 </li>
+	 <li>
+		<b>Results</b> - We provide two possible ways for obtaining results:
+		<ol type="a">
+			<li>
+				<b>Without email</b> - After submitting the sequence, you will obtain the page with a link where you will observe the results after
+				the algorithm will finish. You may save this link and open it afterwards. In case you open the link and the calculation
+				did not finish yet, you will receive a corresponding notification message and you will be asked to refresh the page later.
+			</li>
+			<li>
+				<b>Sent by email</b> - If you choose this option, you must specify your email address and the link with results will be sent to your email address
+				after the algorithm will finish.
+			</li>
+		</ol>
+	 </li>
+	</ol>
+	
+	<p>In order to start the algorithm, the &ldquo;Submit Form&rdquo; button should be pressed, and the results will be available by the link described
+	in item 10 above.</p>
+	
+	<p>It is possible to fill in the form with example values by pressing on the &ldquo;Example&rdquo; button in the lower part of the screen:</p>
+	
+	<img src="/images/screenshots/filled.jpeg" border=0 style="width: 50%;height:50%;">
+	
+	<h1>Results Pages</h1>
+	<p>The link with the results is either sent by email or available at the begining of the run, depending on the user's choice described in item 10 above.</p>
+	<p>See below the Results Page that is obtained as a consequence of using example values:</p>
+	
+	<img src="/images/screenshots/sequence.jpeg" border=0 style="width: 50%;height:50%;">
+	
+	<p>The Results Page contains the following information:</p>
+	<ol>
+		<li>
+			The query RNA sequence at the top.
+		</li>
+		<li>
+			The rightmost table with the parameters that were filled in the input screen. This table does not contain the clustering
+			resultion, which can be viewed by inspecting the distance tables on the left.
+		</li>
+		<li>
+			Three tables where the results are arranged according to the tree-edit, base-pair, and
+			Hamming distances. Each row in the tables contains some distance range and the number of
+			mutations that are within this distance range. See more information on these tables below.
+		</li>
+		<li>
+			It is possible to download the results in the text format. Each row in the file results.txt contains: mutation name, sequence, dot-bracket representation, energy,
+			tree-edit distance, base-pair distance, and Hamming distance.
+		</li>
+	</ol>
+	
+	<p>Each table is arranged according to the corresponding clustering resolution. See also information about clustering resolution 
+	in the 4th item in the list given at the &ldquo;Input Screen&rdquo; section above. The average distance of all
+	found mutations is availabe at the bottom of each table. It is possible to change the clustering resolution for each table
+	and the table will be updated after pressing the &ldquo;UPDATE&rdquo; button.</p>
+	
+	<p>For example, if we change the clustering resolution of the tree-edit distance table from 2 to 3 and of the base-pair distance
+	table from 2 to 1, we will obtain the following updated tables:</p>
+	
+	<!--<img src="files/tables2.jpg" border=0>-->
+	
+	<p>It is possible to see the list of mutations that fall into some distance range of specific distance type, by clicking on
+	the corresponding distance range. For example, clicking on the 22-26 distance range in the Hamming distance table will open the following
+	page that lists all 19 two-point mutations that have a distance from the wild type that falls into the 22-26 Hamming distance range:</p>
+	<img src="/images/screenshots/table2.jpeg" border=0  style="width: 50%;height:50%;">
+	
+	<p>Each row in the table contains: mutation name, corresponding distance from the wild type, free energy of the secondary structure, and
+	dot-bracket representation of the secondary structure.</p>
+	
+	<p>It is possible to see more information about each mutation in the table by clicking on the mutation name. For example,
+	if we press on G7C-A9U, we will get the following page:</p>
+	
+	<img src="/images/screenshots/table3.jpg" border=0  style="width: 50%;height:50%;">
+	
+	<p> The following information can be observed on this page:</p>
+	<ol>
+		<li>
+			Mutation name at the top.
+		</li>
+		<li>
+			Drawings of the secondary structures of the wild type and mutation.
+		</li>
+		<li>
+			RNA sequences of the wild type sequence and mutation. Mutated bases in the mutated sequence are painted in red.
+		</li>
+		<li>
+			Free energies of the wild type and mutation secondary structures.
+		</li>
+		<li>
+			Dot-bracket representations of the secondary structures of the wild type and mutation.
+		</li>
+		<li>
+			Tree-edit, base-pair, and Hamming distances between dot-bracket representation of the wild type and mutation.
+		</li>
+	</ol>
+	 
+	<h1>References</h1>
+	
+	<p>[1] Churkin A, Barash D. <b>An efficient method for the prediction of deleterious multiple-point mutations in the secondary 
+	structure of RNAs using suboptimal folding solutions</b>. <i>BMC Bioinformatics</i>, 9(1):222, April 2008.</p>
+	
+	<p>[2] Hofacker IL, Fontana W, Stadler PF, Bonhoeffer LS, Tacker M, Schuster
+	P: <b>Fast folding and comparison of RNA secondary structures.</b>
+	<i>Monatsh Chem</i> 1994, 125:167-188.</p>
+	
+	<p>[3] Hofacker IL: <b>Vienna RNA secondary structure server</b>. <i>Nucleic
+	Acids Res </i> 2003, 31:3429-3431.</p>
+	
+	<p>[4] Wuchty S, Fontana W, Hofacker IL, Schuster P: <b>Complete suboptimal folding of RNA and the
+			stability of secondary structures</b>. <i>Biopolymers</i> 1999, 49: 145-165.</p>
+	
+	<p>[5] Zuker M:<b> Mfold Web Server for Nucleic Acid Folding and
+			Hybridization Prediction</b>.<i> Nucleic Acids Res</i> 2003, 31:3406-3415.</p>
+	 
+	
+	</body>
+</html>

@@ -1,0 +1,8 @@
+Mutation,Brackets,Energy,Sequence,Distance,Distance1,Distance2,Distance3,Distance4
+U18G-C35U,.((((((..(((((...(((.....)))...)))))...)))))),-18.300000,AGCGGGGGAGACAUAUAGCACAGCCUGUCUCGUGUCCGACCCCGC,50,10,-1,14,14
+U18G-C43G,..((((.((((((............))))))...)))).......,-12.800000,AGCGGGGGAGACAUAUAGCACAGCCUGUCUCGUGCCCGACCCGGC,12,20,-1,12,10
+C3G-C29A,.(((((((..(((((((........))))).)).)))..))))..,-13.300000,AGGGGGGGAGACAUAUAUCACAGCCUGUAUCGUGCCCGACCCCGC,14,21,-1,50,26
+C3G-G34C,.(((((.((((((............)))))).)))))........,-19.000000,AGGGGGGGAGACAUAUAUCACAGCCUGUCUCGUCCCCGACCCCGC,12,31,-1,12,11
+C3G-G34C,.(((((.((((((............)))))).)))))........,-19.000000,AGGGGGGGAGACAUAUAUCACAGCCUGUCUCGUCCCCGACCCCGC,12,31,-1,12,11
+C3G-G34C,.(((((.((((((............)))))).)))))........,-19.000000,AGGGGGGGAGACAUAUAUCACAGCCUGUCUCGUCCCCGACCCCGC,12,25,-1,12,11
+WT,.((((((((((((............))))))........)))))),-16.000000,AGCGGGGGAGACAUAUAUCACAGCCUGUCUCGUGCCCGACCCCGC,0,-1,-1,-1,-1 

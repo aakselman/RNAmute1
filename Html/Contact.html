@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+
+
+            
+
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="Script.js"></script>
+        <link rel="stylesheet" type="text/css" href="Contact.css">
+        <link rel="stylesheet" type="text/css" href="Home.css">
+        <link rel="stylesheet" href="./login_register.css">
+
+        <link rel="alternate" href="Home.html">
+        <style>.underbar { left: 910px;width: 90px;top: 104px;height: 7px;background: #18a7ff;}</style>
+        <title>Contact</title>
+    </head>
+    <body>
+        <div class="Rectangle">
+            <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+            <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+            <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+            <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+            <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+            <div class="underbar"></div>
+        <h2>RNA mutatation calculations</h2>
+        </div>
+
+<form  class="form-container">
+
+
+<div>
+
+        <div class="form-title" s>Name</div>
+         <input  id="name5" class="form-field" type="text" style="height: 30px;"  /><br />
+         <div class="form-title">Email</div>
+         <input id="email5" class="form-field" style="height: 30px;"  type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Must be of email pattern for example israel@isr.co.il"/><br />
+         <div class="form-title">Message</div>
+         <form style="top:400px; " >
+                <textarea id="message5" type="text"  style="top:400px; " onfocus="this.value=''" >Some text...</textarea>
+        </form>
+        <input class="submit-button" onclick="sendmail()" type="submit" value="Send" />
+    </div>
+<!--<div class="form-title"  >Email</div>
+         <input id="email5" class="form-field"  type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Must be of email pattern for example israel@isr.co.il"/><br />
+<div class="form-title" >Message</div>
+        <input id="message5" class="messagebox"  type="text"  /><br />-->
+
+
+
+
+</form>
+
+<script>
+
+function sendmail()
+{
+    $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:8888/send',
+                            data: {"name":$('#name5').val(),"email":$('#email5').val(),"message":$('#message5').val()},
+                            dataType: 'text',
+                            success: function(res) 
+                            { 
+                               alert('Email send succeed\n\n Thank you for using RNAmute\n We send your email to our support team');
+                        
+                                window.location.href = "http://localhost:8888/Home.html";
+
+                            },
+                            error  : function() { alert('error');}
+                        });
+}
+
+
+</script>
+    </body>
+</html>

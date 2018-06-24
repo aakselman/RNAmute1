@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./jquery-confirm.css">
+        <link rel="stylesheet" type="text/css" href="Calculation.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <script src="Script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./Home.css">
+        <link rel="stylesheet" href="./login_register.css">
+        <link rel="stylesheet" href="./Calculation.css">
+        <link rel="html" href="./Calculation.html">
+        <link rel="icon" href="images/LOGO.png">
+        <title>RNAmute home</title>
+        <style>.underbar {left: 545px;width: 60px;top: 104px;height: 7px;background: #18a7ff;}</style>
+    </head>
+ 
+    <body onload="myFunction()" >
+
+
+
+
+        <!--Table 2 stuff-->
+            <div id="login/register" class="login-page animate" style="height: 120%; width: 100%; " >
+                <div class="form"  style="overflow-y:auto; top:5%; max-width: 2000px; width:50%; height: 70%; position: fixed; left: 20%; top: 15%;">
+                        <span onclick="screen_up()" class="close" title="Close PopUp">&times;</span>
+                        <table id="table2" >
+                                <tr>
+                                  <th>Mutation</th>
+                                  <th>Hamming Distance</th>
+                                  <th>Energy(kcal/mol)</th>
+                                  <th>Dot-bracket representation</th>
+                                </tr>
+                               
+                              </table>
+                            </div>
+
+                
+            </div>
+
+
+
+
+
+
+
+            <!--Table 3 stuff-->
+            <div id="Mutation" class="login-page animate" style="height: 120%; width: 100%;" >
+                <div class="form"  style="overflow-y:auto; top:5%; max-width: 2000px; width:50%; height: 70%; position: absolute; left: 20%; top: 2%;">
+                        <span onclick="delete_pic()" class="close" title="Close PopUp">&times;</span>
+                        <img id="mut_image" src="" border="3" alt="Trulli" width="350" height="350">
+                        <img id="wild_image" src="" border="3" alt="Trulli"  width="350" height="350">
+
+                        <h1 id="Wild_type" class="ins_text" style="font-size: 13px; left:430px; top: 10px;">Wild type</h1>
+                        <h1 id="Mut_type" class="ins_text"  style="font-size: 13px; left:50px; top: 10px;">Mutation</h1>
+
+                        <h1 id="Wild_type_sequence" class="ins_text" style="font-size: 13px; text-align: left; top: 415px;">Wild-type sequence:</h1>
+                        <h1 id="Mutation_sequence" class="ins_text" style="font-size: 13px; text-align: left; top: 445px;">Mutation sequence:</h1>
+                        <h1 id="Wild_type_free_energy" class="ins_text" style="font-size: 13px; text-align: left; top: 475px;">Wild-type free energy:</h1>
+                        <h1 id="Mutation_free_energy" class="ins_text" style="font-size: 13px; text-align: left; top: 505px;">Mutation free energy:</h1>
+                        <h1 id="Wild_type_dot_bracket_representation" class="ins_text" style="font-size: 13px; text-align: left; top: 535px;">Wild-type dot-bracket representation:</h1>
+                        <h1 id="Mutation_dot_bracket_representation" class="ins_text" style="font-size: 13px; text-align: left; top: 565px;">Mutation dot-bracket representation:</h1>
+                        <h1 id="Mutation_to_wild_type_tree_edit_distance" class="ins_text" style="font-size: 13px; text-align: left; top: 595px;">Mutation to wild-type tree edit distance between the corresponding dot-brackets:</h1>
+                        <h1 id="Mutation_to_wild_type_hamming_distance" class="ins_text" style="font-size: 13px; text-align: left; top: 625px;">Mutation to wild-type hamming distance between the corresponding dot-brackets:</h1>
+                        <h1 id="Mutation_to_wild_type_base_pair_distance" class="ins_text" style="font-size: 13px; text-align: left; top: 655px;">Mutation to wild-type base-pair distance between the corresponding dot-brackets:</h1>
+                 
+                </div>
+                
+            </div>
+
+
+        <!--Home bar buttons stuff-->
+        <div class="Rectangle" style="z-index: -1;">
+            <button class="btn RNAmute" onclick="window.location.href= 'Home.html'">RNAmute</button>
+            <button class="btn Home" onclick="window.location.href= 'Home.html'">Home</button>
+            <button class="btn Home" style="left: 690px; top: 60px;" onclick="window.location.href= 'Calculation.html'">Calculate</button>
+            <button class="btn Home" style=" left: 880px;top: 60px;" onclick="window.location.href= 'Contact.html'">Contact us</button>
+            <button class="btn Home" style=" left: 1070px;top: 60px;"onclick="window.location.href= 'About.html'">About</button>
+            <div class="underbar"></div>
+
+        
+
+            <button id="userbtn" class="btn Home" style="left: 1200px; top: 30px;width: auto;
+            font-size: 15px; visibility:hidden;" onclick="window.location.href= 'Userpage.html'">User</button>
+            <button id="userdis" class="btn Home" style="left: 1300px; top: 30px;width: auto;
+            font-size: 15px; visibility: hidden;" onclick="logout()" >Log out</button>
+
+        <h2>RNA mutatation calculations</h2>
+       
+
+        <div class="form-container"></div>
+        <div class="RNA_Cal">RNA Calculation</div>
+        <div class="RNA_Cal2">Query RNA sequence
+        <div class="Num_of_mut" style="left: 12.5%;top: 40px; width: 1100px; height: 60px;">
+            <div id="wildsequence" class="RNA_Cal3" style="font-size: 20px; top:15px;" ></div>
+        </div>
+        
+   
+
+
+
+
+
+
+
+
+
+        <!-- Table1 stuff  (3 tables of distances)-->
+
+        <div class="Num_of_mut" style="left: 8%;top:120px; width: 320px;height: 570px;">
+            <div class="RNA_Cal3" style="top:5px;" >Tree edit distance</div>
+             <h1 class="ins_text" style="position: absolute; text-align:center;  top: 65px;">Clustering Resolution</h1>
+             <h1  class="ins_text" style="top: 500px;">Average Distance</h1>
+             <div  class="Num_of_mut" style="left: 230px;top:500px; width: 80px;height: 40px;">
+                    <h1 id="AVG1" class="Avg_text"> </h1>
+             </div>
+             <input id="T_distance" class="text_box" type="number"  style="width:80px; color: black; top: 70px; left: 230px; " placeholder=""/>
+             <a id="update1" onclick="update1()" href="#"  style="width:40px; color: black; top: 110px; left: 120px; " class="myButton2" >Update</a>
+
+            <div style="overflow-y:auto;" class="table">
+                    <table id="T_table">
+                            <tr>
+                                    <th>Distance range</th>
+                                    <th>Frequency</th>
+                            </tr>
+
+                           
+                          </table>
+             
+                </div>
+        </div>
+
+        <div class="Num_of_mut" style="left: 30%;top:120px; width: 320px;height: 570px;">
+                <div class="RNA_Cal3" style="top:5px;" >Base pair distance</div>
+                 <h1  class="ins_text" style="position: absolute; text-align:center;  top: 65px;">Clustering Resolution</h1>
+                 <h1 class="ins_text" style="top: 500px;">Average Distance</h1>
+                 <div  class="Num_of_mut" style="left: 230px;top:500px; width: 80px;height: 40px;">
+                                <h1 id="AVG2"  class="Avg_text"></h1>
+                 </div>
+                 <input id="B_distance" class="text_box" type="number"  style="width:80px; color: black; top: 70px; left: 230px; " placeholder=""/>
+                 <a id="update2" onclick="update2()" href="#"  style="width:40px; color: black; top: 110px; left: 120px; " class="myButton2" >Update</a>
+            
+                
+                 <div style="overflow-y:auto;" class="table">
+                            <table id="B_table">
+                                <tr>
+                                    <th>Distance range</th>
+                                    <th>Frequency</th>
+                                </tr>
+
+                       
+                                </table>
+                           </div>
+
+                </div>
+    
+            <div class="Num_of_mut" style="left: 52%;top:120px; width: 320px;height: 570px;">
+                    <div class="RNA_Cal3" style="top:5px;" >Hammming distance </div>
+                     <h1 class="ins_text" style="position: absolute; text-align:center;  top: 65px;">Clustering Resolution</h1>
+                     <h1 class="ins_text" style="top: 500px;">Average Distance</h1>
+                     <div class="Num_of_mut" style="left: 230px;top:500px; width: 80px;height: 40px;">
+                                    <h1 id="AVG3" class="Avg_text"></h1>
+                     </div>
+
+                     <input id="H_distance"  class="text_box" type="number"  style="width:80px; color: black; top: 70px; left: 230px; " placeholder=""/>
+                     <a href="#" onclick="update3()"  style="width:40px; color: black; top: 110px; left: 120px; " class="myButton2" >Update</a>
+                    
+                     <div style="overflow-y:auto;" class="table">
+                        <table id="H_table">
+                            <tr>
+                                    <th>Distance range</th>
+                                    <th>Frequency</th>
+                            </tr>
+
+                           
+                          </table>
+                               </div>
+                    
+                    </div>
+
+            <div class="Num_of_mut" style="left: 74%; top:180px; width: 240px; height: 400px;">
+                <h1 class="ins_text" style="font-size: 18px;  top: -25px;">Parameters used</h1>
+                <h1 id="Number_of_mutations" class="ins_text" style="font-size: 13px; text-align: left; top: 30px;">Number of mutations</h1>
+                <h1 id="Reading_frame" class="ins_text" style="font-size: 13px; text-align: left; top: 65px;">Reading frame</h1>
+                <h1 id="dist_1" class="ins_text" style="font-size: 13px; text-align: left; top: 100px;">dist 1</h1>
+                <h1 id="dist_2" class="ins_text" style="font-size: 13px; text-align: left; top: 135px;">dist 2</h1>
+                <h1 id="e_range" class="ins_text" style="font-size: 13px; text-align: left; top: 170px;">e-range</h1>
+                <h1 id="Method_type" class="ins_text" style="font-size: 13px; text-align: left; top: 205px;">Method type</h1>
+                <h1 id="Distance_type" class="ins_text" style="font-size: 13px; text-align: left; top: 240px;">Distance type</h1>
+            </div>
+
+
+
+
+
+                     
+                 
+
+        <script> 
+
+        var info; 
+        var array1;
+        var array2;
+        var array3;
+
+        var wild_type=null;
+        var wild;
+    function myFunction()
+    {
+        ////////////////////////////////GET THE WILD OBJECT (THE CALCULATION INFO)/////////////
+        $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8888/Temp',
+                data: "hi",
+                contentType: 'text',
+                success: function(res)  
+                { 
+                    
+                    wild_type=res;
+
+                    $('#Number_of_mutations').text("Number of mutations:" + wild_type[0].Num_of_mutations);
+                    if(wild_type[0].Start_of_reading_frame=='')
+                    {
+                        $('#Reading_frame').text("Reading frame: n/a");
+                    }
+                    else
+                    {
+                        $('#Reading_frame').text("Reading frame: "+wild_type[0].Start_of_reading_frame);
+                    }
+                    $('#dist_1').text("dist 1: "+ wild_type[0].dist_1);
+                    $('#dist_2').text("dist 2: "+ wild_type[0].dist_2);
+                    $('#e_range').text("e-range: "+wild_type[0].e_range);
+                    
+
+                    if(wild_type[0].Method=='f')
+                    {
+                         $('#Method_type').text("\nMethod type: Fast, only stabilizing");
+                     }
+                    else if(wild_type[0].Method=="s")
+                    {
+                        $('#Method_type').text("\nMethod type: Slow, only stabilizing");
+                    }
+                    else if(wild_type[0].Method=='d')
+                    {
+                        $('#Method_type').text("\nMethod type: Fast, stabilizing & destabilizing");
+                    }
+                    else
+                    {   
+                         $('#Method_type').text("\nMethod type: Slow, stabilizing & destabilizing");
+                    }
+
+
+                    if( wild_type[0].Type_of_distance=='h')
+                    {
+                         $('#Distance_type').text("\nDistance type: Hamming dot-bracket");
+                    }
+                    else
+                    {
+                        $('#Distance_type').text("\nDistance type: Base-pair dot-bracket");
+                    }
+                    
+                    $('#T_distance').attr('value', wild_type[0].Tree_edit_dist);
+                    $('#B_distance').attr('value', wild_type[0].Hamming_dist);
+                    $('#H_distance').attr('value', wild_type[0].Base_pair_dist);
+                    $('#wildsequence').text(wild_type[0].RNA_sequence);
+                    
+                    info=wild_type[0].Result;
+                    wild= info[info.length-1];
+
+                    array1=JSON.parse(JSON.stringify( info ));
+                    array2=JSON.parse(JSON.stringify( info ));
+                    array3=JSON.parse(JSON.stringify( info ));
+                    
+                    
+
+                    var Avg_hamming=parseInt(0);
+                    var Avg_Tree=parseInt(0);
+                    var Avg_Base=parseInt(0);
+                    for(var i=0;i<info.length-1;i++)
+                    {
+                        
+                        Avg_hamming+=parseInt(info[i].Distance);
+                        Avg_Tree+=parseInt(info[i].Distance1);
+                        Avg_Base+=parseInt(info[i].Distance4);
+                    }
+                    Avg_hamming/=parseInt(info.length-1);
+                    Avg_Tree/=parseInt(info.length-1);
+                    Avg_Base/=parseInt(info.length-1);
+
+                    Avg_hamming = Avg_hamming.toFixed(2);
+                    Avg_Tree = Avg_Tree.toFixed(2);
+                    Avg_Base = Avg_Base.toFixed(2);
+
+                    $('#AVG1').text(Avg_Tree);
+                    $('#AVG2').text(Avg_hamming);
+                    $('#AVG3').text(Avg_Base);
+
+                 
+
+
+                    filltable1_1();
+                    filltable1_2();
+                    filltable1_3();
+
+                    //filltable2(0,2);
+                    
+                        },
+                    error  : function() { alert('error');}
+                    });
+        
+        
+            
+
+}
+
+window.onbeforeunload = function(){
+     return 'Are you sure you want to leave?\nAll your data will be lost!';
+    };
+
+////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////fill table1 in screen 1/////////////////////////////////
+function filltable1_1()
+{
+ 
+//tree-edit distance
+
+    var dis=wild_type[0].Tree_edit_dist;
+
+    function onerow(x, y, z,S,E) 
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.S=S;
+        this.E=E;
+    }
+
+    array1.sort(function(a, b)
+    {
+        return a.Distance1 - b.Distance1;
+        });
+
+
+    var counter=0;
+    var index=0;
+    var myArray = [];
+    var x=array1[1].Distance1;
+    var Startindex=1;
+    var Endindex=1;
+    var y=0;
+    var i=1;
+    //for(i=1; i< info.length-1; i++)
+    for(i=1; i< array1.length-1; i++)
+    {
+        counter++;
+        if((array1[i+1].Distance1-array1[i].Distance1) >= dis)
+        {
+            Endindex=i+1;
+            y=array1[i].Distance1;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+            Startindex=i+1;
+            x=array1[i+1].Distance1;
+            index++;
+            counter=0;
+        } 
+
+        if(i==array1.length-2)  
+        {
+            
+            counter++;
+            Endindex=i+2;
+            y=array1[i+1].Distance1;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+
+        }
+        
+
+    }
+    if(myArray.length==0)
+    {
+        Endindex=i;
+        y=array1[i].Distance1;
+        myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+    }
+
+    createRow2(myArray);
+ 
+
+    
+
+}
+
+
+function addRow2 (myArray,i) 
+{
+    var row = document.createElement("tr");
+
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+
+    
+    td1.setAttribute("style", "font-size:13px; color:red; cursor: pointer;");
+    td2.setAttribute("style", "font-size:13px");
+
+    
+    var textNode1 = document.createTextNode(""+myArray[i].x+"-"+myArray[i].y+"");
+    var textNode2 = document.createTextNode(myArray[i].z);
+
+
+    row.appendChild(td1);
+    row.appendChild(td2);
+
+    td1.appendChild(textNode1);
+    td1.addEventListener("click", function()
+    {
+        filltable2(myArray[i].S,myArray[i].E,'1');
+    });
+    td2.appendChild(textNode2);
+    return row;
+}
+
+
+function createRow2(myArray)
+{
+    var table = document.getElementById("T_table");
+
+    for(var i=0; i< myArray.length; i++)
+    {
+        table.appendChild(addRow2(myArray,i));
+        }
+
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function delete_pic()
+{
+    $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8888/deletepicture',
+                data: "hi",
+                contentType: 'text',
+                success: function(res)  
+                { 
+                                   
+                },
+                error  : function() { alert('error');}
+            });
+            
+    document.getElementById('Mutation').style.display='none';
+    document.body.style.overflow = 'hidden';
+
+
+}
+
+
+
+
+
+function filltable2(start,end,dis_num) //num=0 hamming distance, num=1 tree edit distance, num=4 base pair distance
+{
+    //$("#table2").;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    var Parent = document.getElementById("table2");
+    while(Parent.hasChildNodes())
+    {
+        Parent.removeChild(Parent.firstChild);
+    }
+
+    createRow(start,end,dis_num);
+    document.getElementById('login/register').style.display='block';
+    //filltable3( info[293]);
+
+    }
+
+
+
+
+
+
+
+
+
+function addRow (i,dis_num) 
+{
+
+    var row = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+    
+    td1.setAttribute("style", "font-size:13px; color:red; cursor: pointer;");
+    td2.setAttribute("style", "font-size:13px");
+    td3.setAttribute("style", "font-size:13px");
+    td4.setAttribute("style", "font-size:13px");
+    
+
+    if(dis_num=='0')
+    {
+        row.setAttribute("id", array3[i].Mutation);
+        var textNode2 = document.createTextNode(array3[i].Distance);
+        var textNode1 = document.createTextNode(array3[i].Mutation);
+        var textNode3 = document.createTextNode(array3[i].Energy);
+        var textNode4 = document.createTextNode(array3[i].Brackets);
+    }
+    else if(dis_num=='1')
+    {
+        row.setAttribute("id", array1[i].Mutation);
+        var textNode2 = document.createTextNode(array1[i].Distance1);
+        var textNode1 = document.createTextNode(array1[i].Mutation);
+        var textNode3 = document.createTextNode(array1[i].Energy);
+        var textNode4 = document.createTextNode(array1[i].Brackets);
+    }
+    else
+    {
+        row.setAttribute("id", array2[i].Mutation);
+        var textNode2 = document.createTextNode(array2[i].Distance4);
+        var textNode1 = document.createTextNode(array2[i].Mutation);
+        var textNode3 = document.createTextNode(array2[i].Energy);
+        var textNode4 = document.createTextNode(array2[i].Brackets);
+    }
+
+    
+
+    row.appendChild(td1);
+    row.appendChild(td2);
+    row.appendChild(td3);
+    row.appendChild(td4);
+
+    td1.appendChild(textNode1);
+
+
+    td1.addEventListener("click", function()
+    {
+        if(dis_num=='0')
+        {
+            filltable3_1(i);
+
+        }
+        else if(dis_num=='1')
+        {
+            filltable3_2(i);
+
+        }
+        else
+        {
+            filltable3_3(i);
+
+        }
+    });
+    td2.appendChild(textNode2);
+    td3.appendChild(textNode3);
+    td4.appendChild(textNode4);
+    td1.setAttribute("type", "button"); 
+    return row;
+    }
+
+function createRow(start,end,dis_num) 
+{
+    var table = document.getElementById("table2");
+    
+    for(var i=start; i< end; i++)
+    {
+        table.appendChild(addRow(i,dis_num));
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////fill table1 in screen 2/////////////////////////////////
+function filltable1_2()
+{
+    
+//Base-pair
+
+    var dis=wild_type[0].Base_pair_dist;
+
+    function onerow(x, y, z,S,E) 
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.S=S;
+        this.E=E;
+    }
+
+    array2.sort(function(a, b)
+    {
+        return a.Distance4 - b.Distance4;
+        });
+
+
+    var counter=0;
+    var index=0;
+    var myArray = [];
+    var x=array2[1].Distance4;
+    var Startindex=1;
+    var Endindex=1;
+    var y=0;
+    var i=1;
+    //for(i=1; i< info.length-1; i++)
+    for(i=1; i< array2.length-1; i++)
+    {
+        counter++;
+        if((array2[i+1].Distance4-array2[i].Distance4) >= dis)
+        {
+            Endindex=i+1;
+            y=array2[i].Distance4;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+            Startindex=i+1;
+            x=array2[i+1].Distance4;
+            index++;
+            counter=0;
+        } 
+
+        if(i==array2.length-2)  
+        {
+            
+            counter++;
+            Endindex=i+2;
+            y=array2[i+1].Distance4;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+
+        }
+        
+
+    }
+    if(myArray.length==0)
+    {
+        Endindex=i;
+        y=array2[i].Distance4;
+        myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+    }
+
+    createRow3(myArray);
+ 
+
+    
+
+}
+
+
+function addRow3 (myArray,i) 
+{
+    var row = document.createElement("tr");
+
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+
+    
+    td1.setAttribute("style", "font-size:13px; color:red; cursor: pointer;");
+    td2.setAttribute("style", "font-size:13px");
+
+    
+
+    var textNode1 = document.createTextNode(""+myArray[i].x+"-"+myArray[i].y+"");
+    var textNode2 = document.createTextNode(myArray[i].z);
+
+    row.appendChild(td1);
+    row.appendChild(td2);
+
+    td1.appendChild(textNode1);
+    td1.addEventListener("click", function()
+    {
+        filltable2(myArray[i].S,myArray[i].E,'4');
+    });
+    td2.appendChild(textNode2);
+    return row;
+}
+
+
+function createRow3(myArray)
+{
+    var table = document.getElementById("B_table");
+
+    for(var i=0; i< myArray.length; i++)
+    {
+        table.appendChild(addRow3(myArray,i));
+        }
+
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////fill table1 in screen 3/////////////////////////////////
+function filltable1_3()
+{
+    
+//Hamming Distance
+
+    var dis=wild_type[0].Hamming_dist;
+
+    function onerow(x, y, z,S,E) 
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.S=S;
+        this.E=E;
+    }
+
+    array3.sort(function(a, b)
+    {
+        return a.Distance - b.Distance;
+        });
+
+
+    var counter=0;
+    var index=0;
+    var myArray = [];
+    var x=array3[1].Distance;
+    var Startindex=1;
+    var Endindex=1;
+    var y=0;
+    var i=1;
+    //for(i=1; i< info.length-1; i++)
+    for(i=1; i< array3.length-1; i++)
+    {
+        counter++;
+        if((array3[i+1].Distance-array3[i].Distance) >= dis)
+        {
+            Endindex=i+1;
+            y=array3[i].Distance;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+            Startindex=i+1;
+            x=array3[i+1].Distance;
+            index++;
+            counter=0;
+        } 
+
+        if(i==array3.length-2)  
+        {
+            
+            counter++;
+            Endindex=i+2;
+            y=array3[i+1].Distance;
+            myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+
+        }
+        
+
+    }
+    if(myArray.length==0)
+    {
+        Endindex=i;
+        y=array3[i].Distance;
+        myArray[index]=new onerow(x,y,counter,Startindex,Endindex);
+    }
+    createRow4(myArray);
+ 
+
+    
+
+}
+
+
+function addRow4 (myArray,i) 
+{
+    var row = document.createElement("tr");
+
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+
+    
+    td1.setAttribute("style", "font-size:13px; color:red; cursor: pointer;");
+    td2.setAttribute("style", "font-size:13px");
+
+    
+
+    var textNode1 = document.createTextNode(""+myArray[i].x+"-"+myArray[i].y+"");
+    var textNode2 = document.createTextNode(myArray[i].z);
+
+
+    row.appendChild(td1);
+    row.appendChild(td2);
+
+    td1.appendChild(textNode1);
+    td1.addEventListener("click", function()
+    {
+        filltable2(myArray[i].S,myArray[i].E,'0');
+    });
+    td2.appendChild(textNode2);
+    return row;
+}
+
+
+function createRow4(myArray)
+{
+    var table = document.getElementById("H_table");
+
+    for(var i=0; i< myArray.length; i++)
+    {
+        table.appendChild(addRow4(myArray,i));
+        }
+
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+function filltable3_1( i)
+{
+    document.body.style.overflow = 'visible';
+    $('#Mut_type').text(array3[i].Mutation);
+
+    $('#Wild_type_sequence').text("Wild-type sequence:" + wild.Sequence);
+    $('#Mutation_sequence').text("Mutation sequence: "+ array3[i].Sequence /*new_mut_seq*/);
+    $('#Wild_type_free_energy').text("Wild-type free energy:"+wild.Energy);
+    $('#Mutation_free_energy').text("Mutation free energy: "+array3[i].Energy);
+    $('#Wild_type_dot_bracket_representation').text("Wild-type dot-bracket representation:"+wild.Brackets);
+    $('#Mutation_dot_bracket_representation').text("Mutation dot-bracket representation: "+array3[i].Brackets);
+    $('#Mutation_to_wild_type_tree_edit_distance').text("Mutation to wild-type tree edit distance between the corresponding dot-brackets:  "+array3[i].Distance1);
+    $('#Mutation_to_wild_type_hamming_distance').text("Mutation to wild-type hamming distance between the corresponding dot-brackets: "+array3[i].Distance3);
+    $('#Mutation_to_wild_type_base_pair_distance').text("Mutation to wild-type base-pair distance between the corresponding dot-brackets:  "+array3[i].Distance4);
+    
+var obj=JSON.stringify(array3[i]);
+
+
+    $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/getmutimage',
+                async: false,
+                data: obj,
+                contentType: 'application/json',
+                success: function(res)
+                { 
+                     $('#mut_image').attr("src",'http://localhost:8888/Convert_ps/'+array3[i].Mutation+'.jpg');
+                },
+                error  : function() { alert('error');}
+            });
+        
+        $('#wild_image').attr("src", "http://localhost:8888/Algo/rna.jpg");
+     document.getElementById('Mutation').style.display='block';
+    
+
+}
+
+
+function filltable3_2( i)
+{
+    document.body.style.overflow = 'visible';
+    $('#Mut_type').text(array1[i].Mutation);
+
+    $('#Wild_type_sequence').text("Wild-type sequence:" + wild.Sequence);
+    $('#Mutation_sequence').text("Mutation sequence: "+ array1[i].Sequence /*new_mut_seq*/);
+    $('#Wild_type_free_energy').text("Wild-type free energy:"+wild.Energy);
+    $('#Mutation_free_energy').text("Mutation free energy: "+array1[i].Energy);
+    $('#Wild_type_dot_bracket_representation').text("Wild-type dot-bracket representation:"+wild.Brackets);
+    $('#Mutation_dot_bracket_representation').text("Mutation dot-bracket representation: "+array1[i].Brackets);
+    $('#Mutation_to_wild_type_tree_edit_distance').text("Mutation to wild-type tree edit distance between the corresponding dot-brackets:  "+array1[i].Distance1);
+    $('#Mutation_to_wild_type_hamming_distance').text("Mutation to wild-type hamming distance between the corresponding dot-brackets: "+array1[i].Distance3);
+    $('#Mutation_to_wild_type_base_pair_distance').text("Mutation to wild-type base-pair distance between the corresponding dot-brackets:  "+array1[i].Distance4);
+    
+var obj=JSON.stringify(array1[i]);
+
+
+    $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/getmutimage',
+                async: false,
+                data: obj,
+                contentType: 'application/json',
+                success: function(res)
+                { 
+                     $('#mut_image').attr("src",'http://localhost:8888/Convert_ps/'+array1 [i].Mutation+'.jpg');
+                },
+                error  : function() { alert('error');}
+            });
+        
+        $('#wild_image').attr("src", "http://localhost:8888/Algo/rna.jpg");
+     document.getElementById('Mutation').style.display='block';
+    
+
+}
+
+
+
+function filltable3_3( i)
+{
+    document.body.style.overflow = 'visible';
+    $('#Mut_type').text(array2[i].Mutation);
+
+    $('#Wild_type_sequence').text("Wild-type sequence:" + wild.Sequence);
+    $('#Mutation_sequence').text("Mutation sequence: "+ array2[i].Sequence /*new_mut_seq*/);
+    $('#Wild_type_free_energy').text("Wild-type free energy:"+wild.Energy);
+    $('#Mutation_free_energy').text("Mutation free energy: "+array2[i].Energy);
+    $('#Wild_type_dot_bracket_representation').text("Wild-type dot-bracket representation:"+wild.Brackets);
+    $('#Mutation_dot_bracket_representation').text("Mutation dot-bracket representation: "+array2[i].Brackets);
+    $('#Mutation_to_wild_type_tree_edit_distance').text("Mutation to wild-type tree edit distance between the corresponding dot-brackets:  "+array2[i].Distance1);
+    $('#Mutation_to_wild_type_hamming_distance').text("Mutation to wild-type hamming distance between the corresponding dot-brackets: "+array2[i].Distance3);
+    $('#Mutation_to_wild_type_base_pair_distance').text("Mutation to wild-type base-pair distance between the corresponding dot-brackets:  "+array2[i].Distance4);
+    
+var obj=JSON.stringify(array2[i]);
+
+
+    $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/getmutimage',
+                async: false,
+                data: obj,
+                contentType: 'application/json',
+                success: function(res)
+                { 
+                     $('#mut_image').attr("src",'http://localhost:8888/Convert_ps/'+array2[i].Mutation+'.jpg');
+                },
+                error  : function() { alert('error');}
+            });
+        
+        $('#wild_image').attr("src", "http://localhost:8888/Algo/rna.jpg");
+     document.getElementById('Mutation').style.display='block';
+    
+
+}
+
+
+
+
+function update1()
+{
+    wild_type[0].Tree_edit_dist=$('#T_distance').val();
+
+    var Parent = document.getElementById("T_table");
+    while(Parent.hasChildNodes())
+    {
+        Parent.removeChild(Parent.firstChild);
+    }
+
+    filltable1_1();
+
+}
+function update2()
+{
+    wild_type[0].Base_pair_dist=$('#B_distance').val();
+    var Parent = document.getElementById("B_table");
+    while(Parent.hasChildNodes())
+    {
+        Parent.removeChild(Parent.firstChild);
+    }
+
+
+    filltable1_2();
+
+
+}
+
+function update3()
+{
+    wild_type[0].Hamming_dist=$('#H_distance').val();
+    var Parent = document.getElementById("H_table");
+    while(Parent.hasChildNodes())
+    {
+        Parent.removeChild(Parent.firstChild);
+    }
+
+    filltable1_3();
+
+
+}
+
+
+
+function screen_up()
+{
+    document.getElementById('login/register').style.display='none';
+    document.body.style.overflow = 'visible';
+}
+
+
+	    </script>
+	
+    </body>
+  
+</html>

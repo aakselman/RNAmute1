@@ -1,0 +1,16 @@
+{
+    "name": "TEST",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "Kirill-Home",
+    "contributors": [],
+    "dependencies": {
+        "imagemagick": "^0.1.3"
+    }
+}
