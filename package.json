@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node your-script.js",
+    "start": "node Server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   
