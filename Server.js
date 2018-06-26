@@ -20,7 +20,6 @@ const csv=require("csvtojson/v2");
 app.use(myParser.json());
 app.use(myParser.urlencoded({extended: true}));
 /*Session*/
-
 /*like "createserver" on node.js its creating the server and the port he will listen*/
 app.listen(8888, function () 
 {
@@ -163,14 +162,14 @@ app.post('/calculation/solution',function(req,res)
       {
           clearInterval(timeout);
 
-          /*var im = require ('imagemagick');
+          var im = require ('imagemagick');
           im.convert(['./Algo/rna.ps','-flatten','./Algo/rna.jpg'],function(err,stdout){
               if(err) throw err;
               console.log('stdout:',stdout);
           });
-      */
+      
           //const csvFilePath='Algo/results.txt';
-          const csvFilePath='Algo/results1.txt';
+          const csvFilePath='Algo/results.txt';
           const csv=require('csvtojson')
           
           csv().fromFile(csvFilePath).then((jsonObj)=>
@@ -256,7 +255,7 @@ app.get('/Temp', function(req, res)
 /**************************Get the images************************/
 app.post('/getmutimage', function(req, res) 
 {
-  /*var fs = require('fs');  
+  var fs = require('fs');  
   var logger = fs.createWriteStream('./Convert_ps/seq.fa',
   {
        flags: 'w' // 'a' means appending (old data will be preserved)
@@ -283,7 +282,7 @@ app.post('/getmutimage', function(req, res)
      console.log('stdout:',stdout);
   });
 
-   mut=''+req.body.Mutation+'.jpg'
+   mut=''+req.body.Mutation+'.jpg';
 
     const timeout = setInterval(function() {
       const file = './Convert_ps/'+ req.body.Mutation+'.jpg';
@@ -298,25 +297,21 @@ app.post('/getmutimage', function(req, res)
           res.send(200);
           
       }
-  }, 5000);
-*/
-res.send(200);
+  }, 500);
+
+
 });
 
 
 app.get('/deletepicture', function(req, res) 
 {
-
-  /*var s = require('fs');
-  var filePath1 = './Convert_ps/rna.ps'; 
-  s.unlinkSync(filePath1);&*/
-  /*var t = require('fs');
+  var t = require('fs');
   var filePath2 = './Convert_ps/'+mut; 
   console.log(filePath2);
   t.unlinkSync(filePath2); 
   var u = require('fs');
   var filePath3 = './Convert_ps/seq.fa'; 
-  t.unlinkSync(filePath3);*/  
+  t.unlinkSync(filePath3);
   res.send(200);
  
 
